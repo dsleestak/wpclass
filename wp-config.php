@@ -17,6 +17,9 @@
  *
  * @package WordPress
  */
+if (($_SERVER['HTTP_CLOUDFRONT_FORWARDED_PROTO'] == 'https') || ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) {
+ $_SERVER['HTTPS'] = 'on';
+}
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -72,8 +75,8 @@ $table_prefix  = 'ebwp_';
  */
 define('WP_DEBUG', false);
 
-define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST'].'/');
-define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST'].'/');
+define('WP_SITEURL', 'https://'.$_SERVER['HTTP_HOST'].'/');
+define('WP_HOME', 'https://'.$_SERVER['HTTP_HOST'].'/');
 
 define('DISALLOW_FILE_MODS',true);
 
